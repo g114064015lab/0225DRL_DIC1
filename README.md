@@ -1,5 +1,7 @@
 # Yun-Ze Zheng - Personal Page
 
+![Personal Page Preview](page.png)
+
 This repository contains a personal single-page web application built with a modern, dynamic, and premium aesthetic.
 
 ## 🚀 Features
