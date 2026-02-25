@@ -40,17 +40,13 @@
     </div>
 
     <script>
-        // Use the system-provided source of truth for the current time
-        let currentTime = new Date("2026-02-25T10:53:27+08:00");
-
         function updateClock() {
-            // Increment the time by 1 second each tick
-            currentTime.setSeconds(currentTime.getSeconds() + 1);
+            const now = new Date();
 
             // Time Formatting
-            const hours = String(currentTime.getHours()).padStart(2, '0');
-            const minutes = String(currentTime.getMinutes()).padStart(2, '0');
-            const seconds = String(currentTime.getSeconds()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
 
             document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 
@@ -61,18 +57,11 @@
                 month: 'short',
                 day: 'numeric'
             };
-            document.getElementById('date').textContent = currentTime.toLocaleDateString('en-US', options);
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
         }
 
-        // Initialize clock immediately without incrementing for the first display
-        // Time Formatting
-        const initialHours = String(currentTime.getHours()).padStart(2, '0');
-        const initialMinutes = String(currentTime.getMinutes()).padStart(2, '0');
-        const initialSeconds = String(currentTime.getSeconds()).padStart(2, '0');
-        document.getElementById('clock').textContent = `${initialHours}:${initialMinutes}:${initialSeconds}`;
-
-        const initialOptions = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-        document.getElementById('date').textContent = currentTime.toLocaleDateString('en-US', initialOptions);
+        // Initialize clock immediately
+        updateClock();
 
         // Update clock every second
         setInterval(updateClock, 1000);
